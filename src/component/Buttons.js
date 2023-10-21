@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { v4 as uuidv4 } from "uuid";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
-function Buttons({ clickHandler }) {
+const Buttons = ({ clickHandler }) => {
   const buttonValues = [
-    ["AC", "+/-", "%", "÷"],
-    ["7", "8", "9", "*"],
-    ["4", "5", "6", "-"],
-    ["1", "2", "3", "+"],
-    ["0", ".", "="],
+    ['AC', '+/-', '%', '÷'],
+    ['7', '8', '9', '*'],
+    ['4', '5', '6', '-'],
+    ['1', '2', '3', '+'],
+    ['0', '.', '='],
   ];
 
   return (
@@ -18,10 +18,9 @@ function Buttons({ clickHandler }) {
           {row.map((button) => (
             <input
               key={uuidv4()}
-              type="button"
               value={button}
               className={`button ${
-                ["+", "-", "*", "÷"].includes(button) && "orange"
+                ['+', '-', '*', '÷'].includes(button) && 'orange'
               }`}
               onClick={() => clickHandler(button)}
             />
@@ -30,7 +29,7 @@ function Buttons({ clickHandler }) {
       ))}
     </div>
   );
-}
+};
 
 Buttons.propTypes = {
   clickHandler: PropTypes.func.isRequired,
