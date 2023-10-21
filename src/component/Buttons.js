@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
 
 function Buttons({ clickHandler }) {
   const buttonValues = [
@@ -11,11 +13,11 @@ function Buttons({ clickHandler }) {
 
   return (
     <div className="buttons">
-      {buttonValues.map((row, rowIndex) => (
-        <div key={rowIndex} className="button-row">
+      {buttonValues.map((row) => (
+        <div key={uuidv4()} className="button-row">
           {row.map((button) => (
             <input
-              key={button}
+              key={uuidv4()}
               type="button"
               value={button}
               className={`button ${
@@ -29,5 +31,9 @@ function Buttons({ clickHandler }) {
     </div>
   );
 }
+
+Buttons.propTypes = {
+  clickHandler: PropTypes.func.isRequired,
+};
 
 export default Buttons;
