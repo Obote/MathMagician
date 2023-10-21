@@ -4,27 +4,27 @@
 }
 
 #answer {
-  background-color: gray;
+  background-color: #797a88;
   padding: 10px;
   font-size: 35px;
   width: 295px;
   height: 45px;
   text-align: right;
-  border: 3px solid gray;
+  border: 3px solid #797a88;
 }
 
 .button {
-  background: #e3e3e3;
+  background: #dcdbdc;
   height: 80px;
   width: 80px;
-  color: black;
+  color: #000;
   font-size: 30px;
-  border: 1px solid white;
+  border: 1px solid #797a88;
   float: left;
 }
 
 .orange {
-  background: orange;
+  background: #f5913e;
 }
 
 .double {
