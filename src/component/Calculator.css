@@ -1,30 +1,30 @@
 .calc {
-  width: 360px;
+  width: 320px;
   margin: 60px auto;
 }
 
 #answer {
-  background-color: #797a88;
+  background-color: #e3e3e3;
   padding: 10px;
   font-size: 35px;
   width: 295px;
   height: 45px;
   text-align: right;
-  border: 3px solid #797a88;
+  border: 3px solid #333;
 }
 
 .button {
-  background: #dcdbdc;
+  background: rgb(250, 250, 249);
   height: 80px;
   width: 80px;
-  color: #000;
+  color: black;
   font-size: 30px;
-  border: 1px solid #797a88;
+  border: 1px solid #333;
   float: left;
 }
 
 .orange {
-  background: #f5913e;
+  background: orange;
 }
 
 .double {

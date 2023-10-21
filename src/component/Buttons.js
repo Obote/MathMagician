@@ -1,38 +1,66 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from 'react';
+import calculate from '../logic/calculate';
 
-const Buttons = ({ clickHandler }) => {
-  const buttonValues = [
-    ['AC', '+/-', '%', '÷'],
-    ['7', '8', '9', '*'],
-    ['4', '5', '6', '-'],
-    ['1', '2', '3', '+'],
-    ['0', '.', '='],
-  ];
+function Buttons() {
+  const [calculatorData, setCalculatorData] = useState({
+    total: null,
+    next: null,
+    operation: null,
+  });
+
+  const handleButtonClick = (buttonName) => {
+    const newData = calculate(calculatorData, buttonName);
+    setCalculatorData(newData);
+  };
+
+  const renderButtons = () => {
+    const buttonValues = [
+      'AC',
+      '+/-',
+      '%',
+      '÷',
+      '7',
+      '8',
+      '9',
+      'x',
+      '4',
+      '5',
+      '6',
+      '-',
+      '1',
+      '2',
+      '3',
+      '+',
+      '0',
+      '.',
+      '=',
+    ];
+
+    return buttonValues.map((value) => (
+      <input
+        type="button"
+        value={value}
+        className={`button ${value === '0' ? 'double' : ''} ${
+          ['+', '-', 'x', '÷', '='].includes(value) ? 'orange' : ''
+        }`}
+        key={value}
+        onClick={() => handleButtonClick(value)}
+      />
+    ));
+  };
 
   return (
-    <div className="buttons">
-      {buttonValues.map((row) => (
-        <div key={uuidv4()} className="button-row">
-          {row.map((button) => (
-            <input
-              key={uuidv4()}
-              value={button}
-              className={`button ${
-                ['+', '-', '*', '÷'].includes(button) && 'orange'
-              }`}
-              onClick={() => clickHandler(button)}
-            />
-          ))}
-        </div>
-      ))}
+    <div className="calc">
+      <input
+        type="text"
+        placeholder="0"
+        id="answer"
+        value={calculatorData.next || calculatorData.total || '0'}
+        readOnly
+      />
+      {renderButtons()}
     </div>
   );
-};
-
-Buttons.propTypes = {
-  clickHandler: PropTypes.func.isRequired,
-};
+}
 
 export default Buttons;
