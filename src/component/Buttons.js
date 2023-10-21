@@ -1,30 +1,64 @@
+import React, { useState } from 'react';
+import calculate from '../logic/calculate';
+
 function Buttons() {
+  const [calculatorData, setCalculatorData] = useState({
+    total: null,
+    next: null,
+    operation: null,
+  });
+
+  const handleButtonClick = (buttonName) => {
+    const newData = calculate(calculatorData, buttonName);
+    setCalculatorData(newData);
+  };
+
+  const renderButtons = () => {
+    const buttonValues = [
+      'AC',
+      '+/-',
+      '%',
+      '÷',
+      '7',
+      '8',
+      '9',
+      'x',
+      '4',
+      '5',
+      '6',
+      '-',
+      '1',
+      '2',
+      '3',
+      '+',
+      '0',
+      '.',
+      '=',
+    ];
+
+    return buttonValues.map((value) => (
+      <input
+        type="button"
+        value={value}
+        className={`button ${value === '0' ? 'double' : ''} ${
+          ['+', '-', 'x', '÷', '='].includes(value) ? 'orange' : ''
+        }`}
+        key={value}
+        onClick={() => handleButtonClick(value)}
+      />
+    ));
+  };
+
   return (
     <div className="calc">
-      <input type="text" placeholder="0" id="answer" />
-      <input type="button" value="AC" className="button" />
-      <input type="button" value="+/-" className="button" />
-      <input type="button" value="%" className="button" />
-      <input type="button" value="÷" className="button orange" />
-
-      <input type="button" value="7" className="button" />
-      <input type="button" value="8" className="button" />
-      <input type="button" value="9" className="button" />
-      <input type="button" value="*" className="button orange" />
-
-      <input type="button" value="4" className="button" />
-      <input type="button" value="5" className="button" />
-      <input type="button" value="6" className="button" />
-      <input type="button" value="-" className="button orange" />
-
-      <input type="button" value="1" className="button" />
-      <input type="button" value="2" className="button" />
-      <input type="button" value="3" className="button" />
-      <input type="button" value="+" className="button orange" />
-
-      <input type="button" value="0" className="button double" />
-      <input type="button" value="." className="button" />
-      <input type="button" value="=" className="button orange" />
+      <input
+        type="text"
+        placeholder="0"
+        id="answer"
+        value={calculatorData.next || calculatorData.total || '0'}
+        readOnly
+      />
+      {renderButtons()}
     </div>
   );
 }
