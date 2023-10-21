@@ -1,30 +1,31 @@
-function Buttons() {
+import React from "react";
+
+function Buttons({ clickHandler }) {
+  const buttonValues = [
+    ["AC", "+/-", "%", "÷"],
+    ["7", "8", "9", "*"],
+    ["4", "5", "6", "-"],
+    ["1", "2", "3", "+"],
+    ["0", ".", "="],
+  ];
+
   return (
-    <div className="calc">
-      <input type="text" placeholder="0" id="answer" />
-      <input type="button" value="AC" className="button" />
-      <input type="button" value="+/-" className="button" />
-      <input type="button" value="%" className="button" />
-      <input type="button" value="÷" className="button orange" />
-
-      <input type="button" value="7" className="button" />
-      <input type="button" value="8" className="button" />
-      <input type="button" value="9" className="button" />
-      <input type="button" value="*" className="button orange" />
-
-      <input type="button" value="4" className="button" />
-      <input type="button" value="5" className="button" />
-      <input type="button" value="6" className="button" />
-      <input type="button" value="-" className="button orange" />
-
-      <input type="button" value="1" className="button" />
-      <input type="button" value="2" className="button" />
-      <input type="button" value="3" className="button" />
-      <input type="button" value="+" className="button orange" />
-
-      <input type="button" value="0" className="button double" />
-      <input type="button" value="." className="button" />
-      <input type="button" value="=" className="button orange" />
+    <div className="buttons">
+      {buttonValues.map((row, rowIndex) => (
+        <div key={rowIndex} className="button-row">
+          {row.map((button) => (
+            <input
+              key={button}
+              type="button"
+              value={button}
+              className={`button ${
+                ["+", "-", "*", "÷"].includes(button) && "orange"
+              }`}
+              onClick={() => clickHandler(button)}
+            />
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
