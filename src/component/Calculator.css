@@ -30,3 +30,74 @@
 .double {
   width: 160px;
 }
+
+/* quotes style */
+
+.display-quote {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.quote-list {
+  list-style: none;
+  padding: 0;
+}
+
+.quote-list-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.quote-text {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.author-text {
+  font-size: 14px;
+  color: #555;
+}
+
+/* App.css for quotes and calculator */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.calculator {
+  width: 320px;
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.quote {
+  flex: 1;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
